@@ -1,0 +1,7 @@
+# https://rythmnai.com/robots.txt
+User-agent: *
+Allow: /
+
+# Block nothing by default. Add Disallow rules for staging or admin paths here.
+
+Sitemap: https://rythmnai.com/sitemap.xml

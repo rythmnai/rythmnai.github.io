@@ -3,8 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RythmnAI — Websites, products, SaaS, and Marketing OS</title>
-<meta name="description" content="RythmnAI is a digital studio that designs and builds websites, products, SaaS platforms, and web apps — and runs growth on Marketing OS.">
+<title>Web, Product &amp; SaaS Development Studio — RythmnAI</title>
+<meta name="description" content="Digital studio building websites, products, SaaS platforms, and web apps — plus Marketing OS, our platform that puts every marketing channel on one board.">
+<link rel="canonical" href="https://rythmnai.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="RythmnAI">
+<meta name="theme-color" content="#F4F0FF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1A1033" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RythmnAI">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://rythmnai.com/">
+<meta property="og:title" content="Web, Product &amp; SaaS Development Studio — RythmnAI">
+<meta property="og:description" content="We design and build websites, products, SaaS platforms, and web apps — then run growth on Marketing OS, every channel on one board.">
+<meta property="og:image" content="https://rythmnai.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RythmnAI — everything you ship, on one tempo.">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Web, Product &amp; SaaS Development Studio — RythmnAI">
+<meta name="twitter:description" content="We design and build websites, products, SaaS platforms, and web apps — then run growth on Marketing OS, every channel on one board.">
+<meta name="twitter:image" content="https://rythmnai.com/og-image.jpg">
+<meta name="twitter:image:alt" content="RythmnAI — everything you ship, on one tempo.">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -34,6 +62,8 @@ body{
 a{color:inherit}
 img{max-width:100%}
 :focus-visible{outline:3px solid var(--bass);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:0 0 10px 0;font-weight:600;text-decoration:none}
+.skip:focus{left:0}
 .wrap{max-width:1240px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 .eyebrow{
   font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
@@ -226,15 +256,136 @@ img{max-width:100%}
 .ftr-links{display:flex;gap:22px;flex-wrap:wrap;font-size:14px}
 .ftr-links a{color:var(--ink-soft);text-decoration:none}
 .ftr-links a:hover{color:var(--beat)}
-.ftr-meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.06em}
+.ftr-meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.06em;font-style:normal}
+.ftr-meta a{text-decoration:none}
+.ftr-meta a:hover{color:var(--beat)}
 
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important}
   .h1 em::after{transform:scaleX(1)}
 }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://rythmnai.com/#organization",
+      "name": "RythmnAI",
+      "url": "https://rythmnai.com/",
+      "email": "hello@rythmnai.com",
+      "description": "Digital studio building websites, products, SaaS platforms, and web apps, and the maker of Marketing OS.",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://rythmnai.com/#logo",
+        "url": "https://rythmnai.com/favicon.svg",
+        "contentUrl": "https://rythmnai.com/favicon.svg",
+        "caption": "RythmnAI"
+      },
+      "image": { "@id": "https://rythmnai.com/#logo" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://rythmnai.com/#studio",
+      "name": "RythmnAI",
+      "url": "https://rythmnai.com/",
+      "email": "hello@rythmnai.com",
+      "image": "https://rythmnai.com/og-image.jpg",
+      "parentOrganization": { "@id": "https://rythmnai.com/#organization" },
+      "areaServed": { "@type": "Place", "name": "Worldwide" },
+      "availableLanguage": "en",
+      "serviceType": [
+        "Website design and development",
+        "Product design and development",
+        "SaaS platform development",
+        "Web application development"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Website design and development",
+              "description": "Marketing sites, landing pages, and content platforms built for speed, clarity, and conversion, wired to a headless CMS."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Product design and development",
+              "description": "Research, user flows, UI design, design systems, and front-end engineering from first sketch to shipped interface."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SaaS platform development",
+              "description": "Multi-tenant SaaS applications with authentication, billing, roles, dashboards, APIs, and cloud infrastructure."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web app and AI feature development",
+              "description": "Internal tools, customer portals, third-party integrations, and AI features built into existing workflows."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://rythmnai.com/#marketing-os",
+      "name": "Marketing OS",
+      "url": "https://rythmnai.com/#marketing-os",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Marketing automation",
+      "operatingSystem": "Web browser",
+      "publisher": { "@id": "https://rythmnai.com/#organization" },
+      "description": "Marketing OS puts planning, content, spend, and results for every channel on a single board, so teams can see what each channel contributes and move budget the same day.",
+      "featureList": [
+        "Campaign board",
+        "Channel mix",
+        "Content engine",
+        "Attribution",
+        "Automations",
+        "Reporting"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://rythmnai.com/#website",
+      "url": "https://rythmnai.com/",
+      "name": "RythmnAI",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://rythmnai.com/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rythmnai.com/#webpage",
+      "url": "https://rythmnai.com/",
+      "name": "Web, Product & SaaS Development Studio — RythmnAI",
+      "description": "RythmnAI is a digital studio that designs and builds websites, products, SaaS platforms, and web apps, and runs growth on Marketing OS.",
+      "isPartOf": { "@id": "https://rythmnai.com/#website" },
+      "about": { "@id": "https://rythmnai.com/#organization" },
+      "primaryImageOfPage": "https://rythmnai.com/og-image.jpg",
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
 </head>
 <body class="playing">
+
+<a class="skip" href="#work">Skip to main content</a>
 
 <header class="hdr">
   <div class="wrap hdr-in">
@@ -281,18 +432,18 @@ img{max-width:100%}
   </section>
 
   <!-- SERVICES -->
-  <section class="sec" id="work">
+  <section class="sec" id="work" aria-labelledby="work-h">
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">The tracks</p>
-        <h2 class="h2">What we build</h2>
+        <h2 class="h2" id="work-h">What we build</h2>
         <p class="lede">One team across design, engineering, and growth. You get the same people from the first sketch to the release notes — no handoffs, no relay race.</p>
       </div>
       <div class="cards">
         <article class="card" style="--c:var(--beat)">
           <p class="card-kicker">Track 01 · Websites</p>
-          <h3>Sites that load fast and read clearly</h3>
-          <p>Marketing sites, landing pages, and content platforms — designed for the message, built for speed, wired to a CMS your team can actually use.</p>
+          <h3>Website design and development</h3>
+          <p>Marketing sites, landing pages, and content platforms that load fast and read clearly — designed for the message, built for speed, wired to a CMS your team can actually use.</p>
           <ul class="tags"><li>Design</li><li>Next.js</li><li>Headless CMS</li><li>SEO</li><li>Analytics</li></ul>
         </article>
         <article class="card" style="--c:var(--pulse)">
@@ -318,13 +469,13 @@ img{max-width:100%}
   </section>
 
   <!-- MARKETING OS -->
-  <section id="marketing-os">
+  <section id="marketing-os" aria-labelledby="os-h">
     <div class="os-wrap">
       <div class="os">
         <div class="os-in os-grid">
           <div>
             <p class="eyebrow">Our product</p>
-            <h2>Marketing <span>OS</span> — every channel on one board.</h2>
+            <h2 id="os-h">Marketing <span>OS</span> — every channel on one board.</h2>
             <p>Campaigns live in six different tools and none of them agree. Marketing OS pulls planning, content, spend, and results onto a single board, so you can see what each channel is contributing and move budget the same day you notice.</p>
             <ul class="os-feats">
               <li><span class="tick">01</span><span><b>Campaign board</b><small>Plan, brief, and schedule every campaign in one place.</small></span></li>
@@ -354,11 +505,11 @@ img{max-width:100%}
   </section>
 
   <!-- PROCESS -->
-  <section class="sec" id="process">
+  <section class="sec" id="process" aria-labelledby="process-h">
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">How it runs</p>
-        <h2 class="h2">Four bars, then you're live</h2>
+        <h2 class="h2" id="process-h">Four bars, then you're live</h2>
         <p class="lede">Every engagement runs the same four bars. You see working software at the end of each one — not a status deck.</p>
       </div>
       <div class="bars">
@@ -391,10 +542,10 @@ img{max-width:100%}
   </section>
 
   <!-- CTA -->
-  <section class="sec" id="start" style="padding-top:0">
+  <section class="sec" id="start" aria-labelledby="start-h" style="padding-top:0">
     <div class="wrap">
       <div class="cta">
-        <h2>Book a soundcheck</h2>
+        <h2 id="start-h">Book a soundcheck</h2>
         <p>Thirty minutes, no deck. Tell us what you're building and we'll tell you how we'd run it, what it takes, and when it ships.</p>
         <div class="cta-row">
           <a class="btn" href="mailto:hello@rythmnai.com?subject=Project%20enquiry">hello@rythmnai.com</a>
@@ -414,7 +565,7 @@ img{max-width:100%}
       <a href="#process">How it runs</a>
       <a href="mailto:hello@rythmnai.com">Contact</a>
     </nav>
-    <span class="ftr-meta">© 2026 RythmnAI · Built on the beat</span>
+    <address class="ftr-meta">© 2026 RythmnAI · <a href="mailto:hello@rythmnai.com">hello@rythmnai.com</a> · Built on the beat</address>
   </div>
 </footer>
 
