@@ -1,12 +1,533 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RythmnAI</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RythmnAI — Websites, products, SaaS, and Marketing OS</title>
+<meta name="description" content="RythmnAI is a digital studio that designs and builds websites, products, SaaS platforms, and web apps — and runs growth on Marketing OS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F0FF;
+  --paper-2:#EAE2FF;
+  --ink:#1A1033;
+  --ink-soft:#4A3D6B;
+  --beat:#FF2E93;
+  --pulse:#00E1C4;
+  --tempo:#FFD23F;
+  --bass:#4B2BFF;
+  --line:rgba(26,16,51,.14);
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"Martian Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --pad:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--bass);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-soft);display:flex;align-items:center;gap:10px;margin:0 0 18px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--beat);flex:none}
+.h2{
+  font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+  font-size:clamp(34px,5.4vw,62px);margin:0 0 16px;
+}
+.lede{max-width:60ch;color:var(--ink-soft);font-size:clamp(16px,1.5vw,19px);margin:0}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:60;background:rgba(244,240,255,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;gap:24px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.eq{display:flex;align-items:flex-end;gap:2.5px;height:20px;width:22px}
+.eq i{display:block;width:3.5px;background:var(--bass);border-radius:1px;height:30%}
+.eq i:nth-child(2){background:var(--beat)}
+.eq i:nth-child(3){background:var(--pulse)}
+.eq i:nth-child(4){background:var(--tempo)}
+.playing .eq i{animation:bounce .62s ease-in-out infinite alternate}
+.playing .eq i:nth-child(2){animation-duration:.45s}
+.playing .eq i:nth-child(3){animation-duration:.78s}
+.playing .eq i:nth-child(4){animation-duration:.54s}
+@keyframes bounce{from{height:22%}to{height:100%}}
+.brand-ai{color:var(--beat)}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:14.5px;font-weight:500}
+.nav a{text-decoration:none;color:var(--ink-soft);transition:color .15s}
+.nav a:hover{color:var(--ink)}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:999px;
+  font-weight:600;font-size:15px;text-decoration:none;border:2px solid var(--ink);
+  background:var(--ink);color:var(--paper);transition:transform .14s ease, box-shadow .14s ease;
+  box-shadow:4px 4px 0 var(--beat);
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--beat)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--beat)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:4px 4px 0 var(--pulse)}
+.btn-ghost:hover{box-shadow:6px 6px 0 var(--pulse)}
+.btn-sm{padding:9px 16px;font-size:14px;box-shadow:3px 3px 0 var(--beat)}
+.hdr .btn-sm{margin-left:4px}
+@media(max-width:860px){.nav{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:clamp(48px,7vw,86px) 0 0;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(75,43,255,.075) 0 1px,transparent 1px 25%);
+  mask-image:linear-gradient(180deg,#000,transparent 78%);
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 78%);
+}
+.hero-in{position:relative}
+.h1{
+  font-family:var(--display);font-weight:800;letter-spacing:-.038em;line-height:.96;
+  font-size:clamp(46px,8.6vw,116px);margin:0 0 24px;max-width:16ch;
+}
+.h1 em{font-style:normal;position:relative;white-space:nowrap;color:var(--beat)}
+.h1 em::after{
+  content:"";position:absolute;left:0;right:0;bottom:.06em;height:.09em;background:var(--tempo);
+  z-index:-1;transform:scaleX(0);transform-origin:left;animation:swipe .7s .25s cubic-bezier(.2,.8,.2,1) forwards;
+}
+@keyframes swipe{to{transform:scaleX(1)}}
+.hero-sub{max-width:56ch;font-size:clamp(17px,1.7vw,21px);color:var(--ink-soft);margin:0 0 32px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero-note{font-family:var(--mono);font-size:11px;color:var(--ink-soft);letter-spacing:.06em}
+
+/* ---------- sequencer ---------- */
+.seq{
+  margin:clamp(44px,6vw,74px) 0 0;border:2px solid var(--ink);border-radius:22px;
+  background:#fff;box-shadow:10px 10px 0 var(--bass);overflow:hidden;
+}
+.seq-bar{
+  display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:2px solid var(--ink);
+  background:var(--paper-2);flex-wrap:wrap;
+}
+.seq-title{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.seq-bpm{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-left:auto;letter-spacing:.08em}
+.seq-play{
+  display:inline-flex;align-items:center;gap:8px;border:2px solid var(--ink);background:var(--tempo);
+  color:var(--ink);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px 14px;border-radius:999px;cursor:pointer;font-weight:600;
+}
+.seq-play:hover{background:var(--beat);color:#fff}
+.seq-body{padding:18px clamp(12px,2.4vw,22px) 22px}
+.track{display:flex;align-items:center;gap:16px;padding:9px 0}
+.track+.track{border-top:1px dashed var(--line)}
+.track-label{
+  flex:none;width:172px;display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;
+}
+.dot{width:11px;height:11px;border-radius:3px;flex:none;border:1.5px solid var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(16,1fr);gap:clamp(3px,.55vw,7px);flex:1;min-width:0}
+.step{
+  appearance:none;border:1.5px solid rgba(26,16,51,.28);background:transparent;border-radius:5px;
+  aspect-ratio:1/1;padding:0;cursor:pointer;transition:transform .1s ease, background .12s ease;
+}
+.step:nth-child(4n+1){border-color:rgba(26,16,51,.5)}
+.step.on{background:var(--c);border-color:var(--ink)}
+.step.hit{transform:scale(1.32)}
+.step.head{box-shadow:inset 0 0 0 2px var(--ink)}
+.seq-cap{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.05em;margin:16px 0 0;padding-left:2px}
+@media(max-width:760px){
+  .track{display:block;padding:12px 0}
+  .track-label{width:auto;margin-bottom:8px}
+  .seq{box-shadow:6px 6px 0 var(--bass)}
+}
+
+/* ---------- services ---------- */
+.sec{padding:clamp(72px,9vw,128px) 0}
+.sec-head{max-width:70ch;margin-bottom:clamp(34px,4vw,54px)}
+.cards{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:680px){.cards{grid-template-columns:1fr 1fr;gap:22px}}
+.card{
+  position:relative;border:2px solid var(--ink);border-radius:18px;background:#fff;
+  padding:26px 24px 28px;overflow:hidden;transition:transform .16s ease, box-shadow .16s ease;
+}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:7px;background:var(--c)}
+.card:hover{transform:translateY(-5px);box-shadow:0 14px 0 -4px var(--c)}
+.card-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:8px 0 10px}
+.card h3{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.02em;margin:0 0 10px;line-height:1.1}
+.card p{margin:0 0 16px;font-size:15.5px;color:var(--ink-soft)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:0}
+.tags li{font-family:var(--mono);font-size:10px;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:4px 9px;color:var(--ink-soft)}
+
+/* ---------- marketing os ---------- */
+.os{background:var(--ink);color:var(--paper);border-radius:28px;margin:0 auto;overflow:hidden}
+.os-wrap{padding:0 var(--pad);max-width:1240px;margin:0 auto}
+.os-in{padding:clamp(44px,6vw,80px) clamp(24px,4vw,64px)}
+.os-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,64px);align-items:center}
+.os .eyebrow{color:rgba(244,240,255,.62)}
+.os .eyebrow::before{background:var(--pulse)}
+.os h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.6vw,54px);line-height:1.02;letter-spacing:-.03em;margin:0 0 16px}
+.os h2 span{color:var(--pulse)}
+.os p{color:rgba(244,240,255,.72);max-width:52ch;margin:0 0 26px}
+.os-feats{list-style:none;padding:0;margin:0 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
+.os-feats li{font-size:14.5px;display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+.os-feats b{display:block;font-weight:600;font-size:14.5px}
+.os-feats small{color:rgba(244,240,255,.55);font-size:12.5px;display:block}
+.tick{color:var(--tempo);font-family:var(--mono);font-size:11px;padding-top:3px;flex:none}
+.os .btn{border-color:var(--pulse);background:var(--pulse);color:var(--ink);box-shadow:4px 4px 0 var(--beat)}
+.os .btn:hover{box-shadow:6px 6px 0 var(--beat)}
+
+/* mixer */
+.mixer{border:1.5px solid rgba(244,240,255,.22);border-radius:18px;padding:22px 20px 18px;background:rgba(244,240,255,.045)}
+.mixer-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,240,255,.55);margin-bottom:20px}
+.led{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--pulse);margin-right:7px;vertical-align:middle}
+.playing .led{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:.25}}
+.strips{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(6px,1.4vw,14px)}
+.strip{display:flex;flex-direction:column;align-items:center;gap:9px}
+.fader{position:relative;width:100%;max-width:34px;height:130px;border-radius:8px;background:rgba(244,240,255,.09);border:1px solid rgba(244,240,255,.16);overflow:hidden}
+.fader-fill{position:absolute;left:0;right:0;bottom:0;height:0;background:var(--c);transition:height 1.1s cubic-bezier(.3,1,.4,1);border-radius:0 0 7px 7px}
+.fader-cap{position:absolute;left:-3px;right:-3px;height:8px;border-radius:3px;background:var(--paper);bottom:0;transition:bottom 1.1s cubic-bezier(.3,1,.4,1);box-shadow:0 0 0 1px rgba(26,16,51,.5)}
+.strip-name{font-family:var(--mono);font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:rgba(244,240,255,.6);text-align:center;line-height:1.3}
+.strip-val{font-family:var(--mono);font-size:10px;color:var(--paper)}
+@media(max-width:900px){
+  .os-grid{grid-template-columns:1fr}
+  .os-feats{grid-template-columns:1fr}
+  .fader{height:100px}
+}
+
+/* ---------- process ---------- */
+.bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:2px solid var(--ink)}
+.bar{padding:24px 22px 30px;border-bottom:2px solid var(--ink);border-right:2px solid var(--ink);position:relative}
+.bar:last-child{border-right:none}
+.bar-n{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--ink-soft);display:block;margin-bottom:14px}
+.bar h3{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;margin:0 0 8px}
+.bar p{margin:0;font-size:14.5px;color:var(--ink-soft)}
+.bar-pips{display:flex;gap:4px;margin-bottom:16px}
+.bar-pips i{width:9px;height:9px;border-radius:2px;border:1.5px solid var(--ink)}
+.bar-pips i.f{background:var(--ink)}
+@media(max-width:760px){.bar{border-right:none}}
+
+/* ---------- cta ---------- */
+.cta{
+  border:2px solid var(--ink);border-radius:24px;background:var(--tempo);
+  padding:clamp(38px,5vw,64px);text-align:center;box-shadow:10px 10px 0 var(--ink);
+}
+.cta h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,5vw,58px);line-height:1;letter-spacing:-.035em;margin:0 0 14px}
+.cta p{margin:0 auto 28px;max-width:46ch;color:#5A4A16}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.cta .btn{box-shadow:4px 4px 0 var(--beat)}
+.cta .btn-ghost{background:#fff}
+
+/* ---------- footer ---------- */
+.ftr{border-top:2px solid var(--ink);margin-top:clamp(48px,6vw,80px);padding:34px 0 44px}
+#start{padding-bottom:0}
+.ftr-in{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.ftr-links{display:flex;gap:22px;flex-wrap:wrap;font-size:14px}
+.ftr-links a{color:var(--ink-soft);text-decoration:none}
+.ftr-links a:hover{color:var(--beat)}
+.ftr-meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);letter-spacing:.06em}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .h1 em::after{transform:scaleX(1)}
+}
+</style>
 </head>
-<body>
-    <h1>Welcome to RythmnAI</h1>
-    <p>The website is comming soon</p>
+<body class="playing">
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#top">
+      <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      rythmn<span class="brand-ai">ai</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">What we build</a>
+      <a href="#marketing-os">Marketing OS</a>
+      <a href="#process">How it runs</a>
+    </nav>
+    <a class="btn btn-sm" href="#start">Start a project</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <p class="eyebrow">Digital studio · Websites · Products · SaaS</p>
+      <h1 class="h1">Everything you ship, on <em>one tempo</em>.</h1>
+      <p class="hero-sub">RythmnAI designs and builds websites, products, SaaS platforms, and web apps — then keeps growth running on Marketing OS, our system for working every channel from one board.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#start">Start a project →</a>
+        <a class="btn btn-ghost" href="#marketing-os">See Marketing OS</a>
+        <span class="hero-note">Taking new projects for Q4</span>
+      </div>
+
+      <!-- SIGNATURE: step sequencer -->
+      <div class="seq" id="seq">
+        <div class="seq-bar">
+          <span class="seq-title">Session · 4 tracks</span>
+          <button class="seq-play" id="playBtn" aria-pressed="true">
+            <span id="playIcon">■</span><span id="playText">Stop</span>
+          </button>
+          <span class="seq-bpm" id="bpm">120 BPM · 16 steps</span>
+        </div>
+        <div class="seq-body" id="tracks"></div>
+      </div>
+      <p class="seq-cap">Click any step to change the pattern. Four workstreams, one session — that's how we run a build.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">The tracks</p>
+        <h2 class="h2">What we build</h2>
+        <p class="lede">One team across design, engineering, and growth. You get the same people from the first sketch to the release notes — no handoffs, no relay race.</p>
+      </div>
+      <div class="cards">
+        <article class="card" style="--c:var(--beat)">
+          <p class="card-kicker">Track 01 · Websites</p>
+          <h3>Sites that load fast and read clearly</h3>
+          <p>Marketing sites, landing pages, and content platforms — designed for the message, built for speed, wired to a CMS your team can actually use.</p>
+          <ul class="tags"><li>Design</li><li>Next.js</li><li>Headless CMS</li><li>SEO</li><li>Analytics</li></ul>
+        </article>
+        <article class="card" style="--c:var(--pulse)">
+          <p class="card-kicker">Track 02 · Product</p>
+          <h3>Product design and build</h3>
+          <p>From a first sketch to a shipped interface. Research, flows, a design system that holds up, and front-end code that matches the file exactly.</p>
+          <ul class="tags"><li>Discovery</li><li>UX / UI</li><li>Design systems</li><li>Prototypes</li></ul>
+        </article>
+        <article class="card" style="--c:var(--bass)">
+          <p class="card-kicker">Track 03 · SaaS</p>
+          <h3>SaaS platforms, end to end</h3>
+          <p>Multi-tenant apps with auth, billing, roles, dashboards, and an admin your support team won't fight. Built to add the second feature as easily as the first.</p>
+          <ul class="tags"><li>Architecture</li><li>Auth &amp; billing</li><li>APIs</li><li>Dashboards</li><li>Cloud</li></ul>
+        </article>
+        <article class="card" style="--c:var(--tempo)">
+          <p class="card-kicker">Track 04 · Web apps</p>
+          <h3>Web apps, tools, and AI features</h3>
+          <p>Internal tools, customer portals, integrations, and AI put where it earns its place — inside the workflow people already use, not bolted on the side.</p>
+          <ul class="tags"><li>Internal tools</li><li>Portals</li><li>Integrations</li><li>AI features</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKETING OS -->
+  <section id="marketing-os">
+    <div class="os-wrap">
+      <div class="os">
+        <div class="os-in os-grid">
+          <div>
+            <p class="eyebrow">Our product</p>
+            <h2>Marketing <span>OS</span> — every channel on one board.</h2>
+            <p>Campaigns live in six different tools and none of them agree. Marketing OS pulls planning, content, spend, and results onto a single board, so you can see what each channel is contributing and move budget the same day you notice.</p>
+            <ul class="os-feats">
+              <li><span class="tick">01</span><span><b>Campaign board</b><small>Plan, brief, and schedule every campaign in one place.</small></span></li>
+              <li><span class="tick">02</span><span><b>Channel mix</b><small>Email, SEO, paid, social, lifecycle, content — side by side.</small></span></li>
+              <li><span class="tick">03</span><span><b>Content engine</b><small>Draft, review, and publish with AI assist that keeps your voice.</small></span></li>
+              <li><span class="tick">04</span><span><b>Attribution</b><small>Track revenue back to the campaign that earned it.</small></span></li>
+              <li><span class="tick">05</span><span><b>Automations</b><small>Rules that shift spend and trigger sequences on their own.</small></span></li>
+              <li><span class="tick">06</span><span><b>Reporting</b><small>One weekly view your whole team reads the same way.</small></span></li>
+            </ul>
+            <a class="btn" href="#start">Get early access →</a>
+          </div>
+
+          <div class="mixer" id="mixer" aria-hidden="true">
+            <div class="mixer-top"><span><span class="led"></span>Channel mix · live</span><span>This week</span></div>
+            <div class="strips">
+              <div class="strip" style="--c:var(--beat)"><div class="fader"><div class="fader-fill" data-lvl="82"></div><div class="fader-cap" data-lvl="82"></div></div><span class="strip-val">82</span><span class="strip-name">Email</span></div>
+              <div class="strip" style="--c:var(--pulse)"><div class="fader"><div class="fader-fill" data-lvl="64"></div><div class="fader-cap" data-lvl="64"></div></div><span class="strip-val">64</span><span class="strip-name">SEO</span></div>
+              <div class="strip" style="--c:var(--tempo)"><div class="fader"><div class="fader-fill" data-lvl="47"></div><div class="fader-cap" data-lvl="47"></div></div><span class="strip-val">47</span><span class="strip-name">Paid</span></div>
+              <div class="strip" style="--c:var(--bass)"><div class="fader"><div class="fader-fill" data-lvl="71"></div><div class="fader-cap" data-lvl="71"></div></div><span class="strip-val">71</span><span class="strip-name">Social</span></div>
+              <div class="strip" style="--c:var(--beat)"><div class="fader"><div class="fader-fill" data-lvl="55"></div><div class="fader-cap" data-lvl="55"></div></div><span class="strip-val">55</span><span class="strip-name">Lifecycle</span></div>
+              <div class="strip" style="--c:var(--pulse)"><div class="fader"><div class="fader-fill" data-lvl="90"></div><div class="fader-cap" data-lvl="90"></div></div><span class="strip-val">90</span><span class="strip-name">Content</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec" id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">How it runs</p>
+        <h2 class="h2">Four bars, then you're live</h2>
+        <p class="lede">Every engagement runs the same four bars. You see working software at the end of each one — not a status deck.</p>
+      </div>
+      <div class="bars">
+        <div class="bar">
+          <span class="bar-n">BAR 01 · WEEK 1</span>
+          <div class="bar-pips" aria-hidden="true"><i class="f"></i><i></i><i></i><i></i></div>
+          <h3>Soundcheck</h3>
+          <p>We map the goal, the users, and the constraints, then agree on what "done" means before anyone opens a file.</p>
+        </div>
+        <div class="bar">
+          <span class="bar-n">BAR 02 · WEEK 2</span>
+          <div class="bar-pips" aria-hidden="true"><i class="f"></i><i class="f"></i><i></i><i></i></div>
+          <h3>Arrangement</h3>
+          <p>Flows, screens, and architecture. You approve a clickable prototype, not a wireframe you have to imagine.</p>
+        </div>
+        <div class="bar">
+          <span class="bar-n">BAR 03 · WEEKS 3–8</span>
+          <div class="bar-pips" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div>
+          <h3>Record</h3>
+          <p>We build in weekly cuts on a live staging URL. You review real software every Friday and steer the next week.</p>
+        </div>
+        <div class="bar">
+          <span class="bar-n">BAR 04 · ONGOING</span>
+          <div class="bar-pips" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></div>
+          <h3>Release</h3>
+          <p>Launch, then keep the tempo — Marketing OS runs the channels while we iterate on what the numbers say.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec" id="start" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta">
+        <h2>Book a soundcheck</h2>
+        <p>Thirty minutes, no deck. Tell us what you're building and we'll tell you how we'd run it, what it takes, and when it ships.</p>
+        <div class="cta-row">
+          <a class="btn" href="mailto:hello@rythmnai.com?subject=Project%20enquiry">hello@rythmnai.com</a>
+          <a class="btn btn-ghost" href="mailto:hello@rythmnai.com?subject=Marketing%20OS%20early%20access">Ask about Marketing OS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <a class="brand" href="#top"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>rythmn<span class="brand-ai">ai</span></a>
+    <nav class="ftr-links" aria-label="Footer">
+      <a href="#work">What we build</a>
+      <a href="#marketing-os">Marketing OS</a>
+      <a href="#process">How it runs</a>
+      <a href="mailto:hello@rythmnai.com">Contact</a>
+    </nav>
+    <span class="ftr-meta">© 2026 RythmnAI · Built on the beat</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- step sequencer ---- */
+  var TRACKS = [
+    {name:'Websites',   color:'var(--beat)',  pattern:[1,0,0,0, 1,0,0,0, 1,0,0,1, 1,0,0,0]},
+    {name:'Product',    color:'var(--pulse)', pattern:[0,0,1,0, 0,0,1,0, 0,0,1,0, 0,1,1,0]},
+    {name:'SaaS',       color:'var(--bass)',  pattern:[1,0,0,1, 0,1,0,0, 1,0,0,1, 0,1,0,0]},
+    {name:'Marketing OS',color:'var(--tempo)',pattern:[0,1,0,1, 0,1,0,1, 0,1,0,1, 0,1,1,1]}
+  ];
+  var host = document.getElementById('tracks');
+  var cells = [];
+
+  TRACKS.forEach(function(t, ti){
+    var row = document.createElement('div');
+    row.className = 'track';
+    var label = document.createElement('div');
+    label.className = 'track-label';
+    label.innerHTML = '<span class="dot" style="background:' + t.color + '"></span>' + t.name;
+    var steps = document.createElement('div');
+    steps.className = 'steps';
+    steps.setAttribute('role','group');
+    steps.setAttribute('aria-label', t.name + ' pattern');
+    var rowCells = [];
+    t.pattern.forEach(function(on, si){
+      var b = document.createElement('button');
+      b.className = 'step' + (on ? ' on' : '');
+      b.style.setProperty('--c', t.color);
+      b.type = 'button';
+      b.setAttribute('aria-label', t.name + ' step ' + (si + 1));
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.addEventListener('click', function(){
+        var nowOn = b.classList.toggle('on');
+        b.setAttribute('aria-pressed', nowOn ? 'true' : 'false');
+      });
+      steps.appendChild(b);
+      rowCells.push(b);
+    });
+    cells.push(rowCells);
+    row.appendChild(label);
+    row.appendChild(steps);
+    host.appendChild(row);
+  });
+
+  var i = 0, timer = null, playing = false;
+  var btn = document.getElementById('playBtn');
+  var icon = document.getElementById('playIcon');
+  var text = document.getElementById('playText');
+
+  function tick(){
+    cells.forEach(function(row){
+      row.forEach(function(c){ c.classList.remove('head','hit'); });
+      var c = row[i];
+      c.classList.add('head');
+      if (c.classList.contains('on')) {
+        c.classList.add('hit');
+        setTimeout(function(){ c.classList.remove('hit'); }, 130);
+      }
+    });
+    i = (i + 1) % 16;
+  }
+
+  function start(){
+    if (playing) return;
+    playing = true;
+    document.body.classList.add('playing');
+    btn.setAttribute('aria-pressed','true');
+    icon.textContent = '■'; text.textContent = 'Stop';
+    tick();
+    timer = setInterval(tick, 250);
+  }
+  function stop(){
+    playing = false;
+    document.body.classList.remove('playing');
+    btn.setAttribute('aria-pressed','false');
+    icon.textContent = '▶'; text.textContent = 'Play';
+    clearInterval(timer);
+    cells.forEach(function(row){ row.forEach(function(c){ c.classList.remove('head','hit'); }); });
+  }
+  btn.addEventListener('click', function(){ playing ? stop() : start(); });
+
+  if (reduce) { stop(); } else { start(); }
+
+  /* pause the loop when the sequencer scrolls out of view */
+  if ('IntersectionObserver' in window && !reduce) {
+    var wasPlaying = false;
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { if (wasPlaying) start(); }
+        else { wasPlaying = playing; if (playing) stop(); }
+      });
+    }, {threshold:0}).observe(document.getElementById('seq'));
+  }
+
+  /* ---- mixer faders ---- */
+  var mixer = document.getElementById('mixer');
+  function raiseFaders(){
+    mixer.querySelectorAll('[data-lvl]').forEach(function(el){
+      var lvl = el.getAttribute('data-lvl') + '%';
+      if (el.classList.contains('fader-fill')) el.style.height = lvl;
+      else el.style.bottom = 'calc(' + lvl + ' - 4px)';
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(e){ if (e.isIntersecting){ raiseFaders(); obs.disconnect(); } });
+    }, {threshold:.35}).observe(mixer);
+  } else { raiseFaders(); }
+})();
+</script>
 </body>
 </html>
