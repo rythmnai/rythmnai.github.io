@@ -72,7 +72,7 @@ body{
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
 a{color:inherit}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--navy-deep);color:#fff;padding:12px 18px;border-radius:0 0 10px 0;font-weight:600;text-decoration:none}
 .skip:focus{left:0}
@@ -81,9 +81,9 @@ img{max-width:100%;display:block}
 
 .eyebrow{
   font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--blue);display:flex;align-items:center;gap:10px;margin:0 0 16px;font-weight:500;
+  color:var(--blue);display:flex;align-items:flex-start;gap:10px;margin:0 0 16px;font-weight:500;
 }
-.eyebrow::before{content:"";width:22px;height:2px;background:var(--amber);flex:none;border-radius:2px}
+.eyebrow::before{content:"";width:22px;height:2px;margin-top:.62em;background:var(--amber);flex:none;border-radius:2px}
 .h2{
   font-family:var(--display);font-weight:800;letter-spacing:-.032em;line-height:1.05;
   font-size:clamp(32px,4.6vw,54px);margin:0 0 16px;
@@ -160,31 +160,45 @@ img{max-width:100%;display:block}
 .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(28px,4vw,60px);align-items:center}
 .h1{
   font-family:var(--display);font-weight:800;letter-spacing:-.038em;line-height:1.02;
-  font-size:clamp(38px,5.6vw,68px);margin:0 0 20px;
+  font-size:clamp(33px,8.2vw,68px);margin:0 0 18px;
 }
 .hero-sub{max-width:52ch;font-size:clamp(16.5px,1.5vw,19.5px);color:var(--ink-soft);margin:0 0 30px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:13px;align-items:center;margin-bottom:26px}
-.hero-note{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.06em;display:flex;align-items:center;gap:7px}
-.hero-note i{width:7px;height:7px;border-radius:50%;background:#12B76A;flex:none;box-shadow:0 0 0 3px rgba(18,183,106,.16)}
+.hero-note{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.06em;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.hero-note i{width:7px;height:7px;margin-top:.42em;border-radius:50%;background:#12B76A;flex:none;box-shadow:0 0 0 3px rgba(18,183,106,.16)}
 .pillars{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
 .pillars li{
   font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
   border:1px solid var(--line-2);background:rgba(255,255,255,.72);border-radius:999px;padding:7px 14px;color:var(--navy);
 }
 .pillars li b{color:var(--amber-deep);font-weight:500}
-.hero-art{position:relative;display:flex;justify-content:center;align-items:center}
-.hero-art img{width:min(100%,400px);filter:drop-shadow(0 30px 50px rgba(3,42,130,.26))}
+.hero-art{position:relative;display:grid;place-items:center;width:100%;max-width:420px;aspect-ratio:1/.9;margin-inline:auto}
+.hero-art img{width:86%;filter:drop-shadow(0 26px 44px rgba(3,42,130,.24))}
 .hero-art .halo{
   position:absolute;width:82%;aspect-ratio:1;border-radius:50%;
   background:radial-gradient(circle,rgba(11,111,232,.16),transparent 66%);
 }
-.hero-art .ring{position:absolute;width:88%;aspect-ratio:1;border:1px dashed rgba(3,42,130,.2);border-radius:50%;animation:spin 44s linear infinite}
-.hero-art .ring.r2{width:70%;border-style:solid;border-color:rgba(255,179,2,.32);animation-duration:32s;animation-direction:reverse}
+.hero-art .ring{position:absolute;width:84%;aspect-ratio:1;border:1px dashed rgba(3,42,130,.18);border-radius:50%;animation:spin 44s linear infinite}
+.hero-art .ring.r2{width:64%;border-style:solid;border-color:rgba(255,179,2,.3);animation-duration:32s;animation-direction:reverse}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero-art{order:-1;margin-bottom:8px}
-  .hero-art img{width:min(52%,220px)}
+  .hero-grid{grid-template-columns:1fr;gap:18px}
+  .hero-art{order:-1;margin:0 0 4px;max-width:250px;justify-self:start}
+}
+@media(max-width:620px){
+  body{font-size:16px}
+  .brand img{height:30px}
+  .brand-name{font-size:16.5px}
+  .brand-sub{display:none}
+  .hdr-in{height:64px;gap:12px}
+  .eyebrow{font-size:9.5px;letter-spacing:.08em}
+  .eyebrow::before{width:16px}
+  .hero{padding-top:24px}
+  .hero-art{max-width:170px;margin-bottom:0}
+  .hero-art .halo{width:96%}
+  .hero-sub{margin-bottom:24px}
+  .hero-cta{gap:10px;margin-bottom:20px}
+  .hero-cta .btn{flex:1 1 100%}
 }
 
 /* ---------- sequencer ---------- */
@@ -195,6 +209,7 @@ img{max-width:100%;display:block}
 .seq-bar{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#FAFCFF,#F1F6FE);flex-wrap:wrap}
 .seq-title{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);font-weight:500}
 .seq-bpm{font-family:var(--mono);font-size:11px;color:var(--ink-faint);margin-left:auto;letter-spacing:.08em}
+.seq-bar{flex-wrap:nowrap}
 .seq-play{
   display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--surface);
   color:var(--navy);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
@@ -206,7 +221,7 @@ img{max-width:100%;display:block}
 .track+.track{border-top:1px solid var(--line)}
 .track-label{flex:none;width:160px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
 .dot{width:10px;height:10px;border-radius:3px;flex:none;background:var(--c)}
-.steps{display:grid;grid-template-columns:repeat(16,1fr);gap:clamp(3px,.5vw,6px);flex:1;min-width:0}
+.steps{display:grid;grid-template-columns:repeat(var(--steps,16),1fr);gap:clamp(4px,.5vw,6px);flex:1;min-width:0}
 .step{appearance:none;border:1px solid rgba(10,23,64,.16);background:#F7FAFF;border-radius:5px;aspect-ratio:1/1;width:100%;max-width:34px;justify-self:center;padding:0;cursor:pointer;transition:transform .1s ease, background .12s ease, box-shadow .12s ease}
 .step:nth-child(4n+1){border-color:rgba(10,23,64,.28)}
 .step.on{background:var(--c);border-color:transparent}
@@ -216,6 +231,12 @@ img{max-width:100%;display:block}
 @media(max-width:760px){
   .track{display:block;padding:12px 0}
   .track-label{width:auto;margin-bottom:8px}
+}
+@media(max-width:620px){
+  .seq-bar{gap:10px;padding:12px 14px}
+  .seq-title{font-size:10px;letter-spacing:.08em}
+  .seq-bpm{display:none}
+  .seq-play{margin-left:auto;flex:none}
 }
 
 /* ---------- trust strip ---------- */
@@ -1152,43 +1173,60 @@ img{max-width:100%;display:block}
     {name:'Run & support', color:'#FFB302', pattern:[0,1,0,1, 0,1,0,1, 0,1,0,1, 0,1,1,1]}
   ];
   var host = document.getElementById('tracks');
+  var bpmLabel = document.getElementById('bpm');
+  var narrow = window.matchMedia('(max-width: 620px)');
   var cells = [];
+  var STEPS = 16;
 
-  TRACKS.forEach(function(t){
-    var row = document.createElement('div');
-    row.className = 'track';
-    var label = document.createElement('div');
-    label.className = 'track-label';
-    label.innerHTML = '<span class="dot" style="--c:' + t.color + '"></span>' + t.name;
-    var steps = document.createElement('div');
-    steps.className = 'steps';
-    steps.setAttribute('role','group');
-    steps.setAttribute('aria-label', t.name + ' pattern');
-    var rowCells = [];
-    t.pattern.forEach(function(on, si){
-      var b = document.createElement('button');
-      b.className = 'step' + (on ? ' on' : '');
-      b.style.setProperty('--c', t.color);
-      b.type = 'button';
-      b.setAttribute('aria-label', t.name + ' step ' + (si + 1));
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      b.addEventListener('click', function(){
-        var nowOn = b.classList.toggle('on');
-        b.setAttribute('aria-pressed', nowOn ? 'true' : 'false');
+  function build(){
+    /* 16 steps squeeze to ~13px cells on a phone — halve the grid instead */
+    STEPS = narrow.matches ? 8 : 16;
+    host.innerHTML = '';
+    cells = [];
+    i = 0;
+    TRACKS.forEach(function(t){
+      var row = document.createElement('div');
+      row.className = 'track';
+      var label = document.createElement('div');
+      label.className = 'track-label';
+      label.innerHTML = '<span class="dot" style="--c:' + t.color + '"></span>' + t.name;
+      var steps = document.createElement('div');
+      steps.className = 'steps';
+      steps.style.setProperty('--steps', STEPS);
+      steps.setAttribute('role','group');
+      steps.setAttribute('aria-label', t.name + ' pattern');
+      var rowCells = [];
+      t.pattern.slice(0, STEPS).forEach(function(on, si){
+        var b = document.createElement('button');
+        b.className = 'step' + (on ? ' on' : '');
+        b.style.setProperty('--c', t.color);
+        b.type = 'button';
+        b.setAttribute('aria-label', t.name + ' step ' + (si + 1));
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        b.addEventListener('click', function(){
+          var nowOn = b.classList.toggle('on');
+          b.setAttribute('aria-pressed', nowOn ? 'true' : 'false');
+        });
+        steps.appendChild(b);
+        rowCells.push(b);
       });
-      steps.appendChild(b);
-      rowCells.push(b);
+      cells.push(rowCells);
+      row.appendChild(label);
+      row.appendChild(steps);
+      host.appendChild(row);
     });
-    cells.push(rowCells);
-    row.appendChild(label);
-    row.appendChild(steps);
-    host.appendChild(row);
-  });
+    bpmLabel.textContent = 'One cadence · ' + STEPS + ' steps';
+  }
 
   var i = 0, timer = null, playing = false;
   var btn = document.getElementById('playBtn');
   var icon = document.getElementById('playIcon');
   var text = document.getElementById('playText');
+
+  build();
+  var onBreakpoint = function(){ var was = playing; stop(); build(); if (was) start(); };
+  if (narrow.addEventListener) narrow.addEventListener('change', onBreakpoint);
+  else if (narrow.addListener) narrow.addListener(onBreakpoint);
 
   function tick(){
     cells.forEach(function(row){
@@ -1200,7 +1238,7 @@ img{max-width:100%;display:block}
         setTimeout(function(){ c.classList.remove('hit'); }, 130);
       }
     });
-    i = (i + 1) % 16;
+    i = (i + 1) % STEPS;
   }
 
   function start(){
