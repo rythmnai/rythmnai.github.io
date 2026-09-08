@@ -252,6 +252,71 @@ img{max-width:100%;height:auto;display:block}
   .strip-i:nth-child(-n+2){border-bottom:1px solid var(--line)}
 }
 
+/* ---------- mission & ecosystem ---------- */
+.mission{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,#FFFCF3 0%,#F7F9FE 62%,var(--paper) 100%)}
+.mission::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(680px 340px at 92% 4%,rgba(255,179,2,.20),transparent 62%),
+             radial-gradient(600px 330px at 2% 98%,rgba(11,111,232,.11),transparent 64%)}
+.mission::after{content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--amber),var(--sky),var(--blue),var(--navy))}
+.mission-in{position:relative;padding:clamp(48px,6.4vw,92px) 0}
+.mission-flag{display:inline-flex;align-items:center;gap:9px;margin:0 0 18px;
+  font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:#3A2400;background:linear-gradient(180deg,var(--amber),var(--amber-deep));
+  border-radius:999px;padding:7px 15px;box-shadow:0 10px 22px -12px rgba(245,139,0,.9)}
+.mission-flag i{width:7px;height:7px;border-radius:50%;background:#3A2400;display:block;flex:none}
+.mission-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,4vw,56px);align-items:start}
+@media(max-width:900px){.mission-grid{grid-template-columns:1fr}}
+.mission h2{max-width:22ch}
+.mission .lede{margin-top:16px;max-width:58ch;color:var(--ink-soft)}
+
+.mission-now{border:1px solid var(--line-2);border-radius:18px;background:rgba(255,255,255,.78);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:24px 22px;box-shadow:var(--shadow-sm)}
+.mission-now-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 14px}
+.mission-now ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.mission-now li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.45;color:var(--ink-soft)}
+.mission-now li svg{width:16px;height:16px;flex:none;margin-top:3px;color:var(--blue)}
+.mission-now b{color:var(--ink);font-weight:600}
+
+.eco-head{margin-top:clamp(38px,5vw,62px);display:flex;flex-wrap:wrap;align-items:baseline;gap:12px}
+.eco-head h3{font-family:var(--display);font-weight:800;letter-spacing:-.028em;line-height:1.1;
+  font-size:clamp(22px,2.7vw,32px);margin:0}
+.eco-head h3 span{color:var(--blue)}
+.eco-head p{margin:0 0 0 auto;color:var(--ink-faint);font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:760px){.eco-head p{margin-left:0}}
+
+.eco{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1000px){.eco{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.eco{grid-template-columns:1fr}}
+.eco-step{position:relative;border:1px solid var(--line-2);border-radius:16px;background:var(--surface);
+  padding:22px 20px;box-shadow:var(--shadow-sm);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.eco-step:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--c,var(--blue))}
+.eco-step::after{content:"";position:absolute;top:46px;right:-16px;width:16px;height:2px;
+  background:var(--line-2);z-index:1}
+.eco-step:last-child::after{display:none}
+@media(max-width:1000px){.eco-step:nth-child(2n)::after{display:none}}
+@media(max-width:620px){.eco-step::after{display:none}}
+.eco-top{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.eco-ico{width:38px;height:38px;border-radius:10px;flex:none;display:grid;place-items:center;
+  background:color-mix(in srgb,var(--c) 12%,#fff);border:1px solid color-mix(in srgb,var(--c) 28%,#fff);color:var(--c)}
+.eco-ico svg{width:19px;height:19px}
+.eco-n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-faint)}
+.eco-step h4{font-family:var(--display);font-weight:700;font-size:17.5px;letter-spacing:-.018em;
+  line-height:1.22;margin:0 0 8px}
+.eco-step p{margin:0;font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.eco-chips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;padding:0}
+.eco-chips li{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:4px 9px}
+.eco-social{display:flex;gap:7px;margin:14px 0 0}
+.eco-social span{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+  background:var(--paper-2);border:1px solid var(--line);color:var(--navy)}
+.eco-social svg{width:14px;height:14px}
+.eco-cap{margin:22px 0 0;font-size:14.5px;color:var(--ink-soft);max-width:74ch}
+.eco-cap b{color:var(--ink);font-weight:600}
+
 /* ---------- services ---------- */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 @media(max-width:1000px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
@@ -636,6 +701,9 @@ img{max-width:100%;height:auto;display:block}
     <path d="M3.1 8.9h3.8v11.6H3.1z"/>
     <path d="M9.4 8.9h3.63v1.58h.05c.5-.94 1.74-1.93 3.58-1.93 3.83 0 4.54 2.4 4.54 5.53v6.42h-3.79V14.9c0-1.35-.02-3.09-1.9-3.09-1.9 0-2.19 1.46-2.19 2.98v5.71H9.4z"/>
   </symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.5 20.5h17"/><path d="M6.5 20.5v-6M11 20.5V8.5M15.5 20.5v-9M20 20.5V4.5"/>
+  </symbol>
   <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 3 21 7.6 12 12.2 3 7.6z"/><path d="M3 12.4 12 17l9-4.6M3 16.6 12 21.2l9-4.6"/>
   </symbol>
@@ -728,6 +796,84 @@ img{max-width:100%;height:auto;display:block}
         <div class="strip-i"><b>AWS &amp; GCP</b><span>Cloud &amp; Kubernetes</span></div>
         <div class="strip-i"><b>End&#8209;to&#8209;end</b><span>Design → build → run</span></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ MISSION & ECOSYSTEM ============ -->
+  <section class="mission" id="vision" aria-labelledby="vision-h">
+    <div class="wrap mission-in">
+
+      <div class="mission-grid">
+        <div>
+          <p class="mission-flag"><i aria-hidden="true"></i>Why we exist</p>
+          <h2 class="h2" id="vision-h">Every business — small or large — deserves <span class="accent">its own website, its own product, its own AI</span>.</h2>
+          <p class="lede">That is the whole idea behind Rythmn AI. The corner store, the clinic, the studio, the factory, the scale&#8209;up — each one should have a digital home it actually owns, a product that carries its business online, and AI working quietly inside it. Not a rented page on someone else's platform. Not a template with their logo dropped in.</p>
+          <p class="lede">So we build the same way for a first&#8209;time owner as we do for a funded team: real engineering, real ownership, and a path that keeps going after launch.</p>
+        </div>
+
+        <aside class="mission-now">
+          <p class="mission-now-h">Where we are today</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span><b>14 service lines</b> — websites, web apps, SaaS, e&#8209;commerce and mobile, designed and built in&#8209;house.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span><b>AI where the work happens</b> — assistants, RAG systems and agents grounded in your own content.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span><b>Cloud, DevOps and integrations</b> — AWS and GCP, shipped with CI, monitoring and an SLA.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"></use></svg><span><b>Marketing OS</b> — our own live product, putting every channel on one board.</span></li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="eco-head">
+        <h3>The full ecosystem — <span>four moves, one partner</span></h3>
+        <p>Start anywhere · each step compounds</p>
+      </div>
+
+      <ol class="eco">
+        <li class="eco-step" style="--c:#0B6FE8">
+          <div class="eco-top">
+            <span class="eco-ico"><svg aria-hidden="true"><use href="#i-web"></use></svg></span>
+            <span class="eco-n">STEP 01</span>
+          </div>
+          <h4>Their app first</h4>
+          <p>A website or app that is genuinely theirs — fast, findable and built around how the business actually works. The digital home everything else plugs into.</p>
+          <ul class="eco-chips"><li>Website</li><li>Web app</li><li>Branding</li><li>SEO base</li></ul>
+        </li>
+
+        <li class="eco-step" style="--c:#F58B00">
+          <div class="eco-top">
+            <span class="eco-ico"><svg aria-hidden="true"><use href="#i-spark"></use></svg></span>
+            <span class="eco-n">STEP 02</span>
+          </div>
+          <h4>Then get it seen</h4>
+          <p>Social media marketing on the channels their customers already use — Facebook, Instagram and the rest. Content calendar, creatives and campaigns, with AI drafting in the brand's own voice.</p>
+          <div class="eco-social" aria-hidden="true">
+            <span><svg><use href="#i-fb"></use></svg></span>
+            <span><svg><use href="#i-ig"></use></svg></span>
+            <span><svg><use href="#i-li"></use></svg></span>
+          </div>
+        </li>
+
+        <li class="eco-step" style="--c:#032A82">
+          <div class="eco-top">
+            <span class="eco-ico"><svg aria-hidden="true"><use href="#i-cart"></use></svg></span>
+            <span class="eco-n">STEP 03</span>
+          </div>
+          <h4>Take the product online</h4>
+          <p>We sit with the business, learn how it really sells, then build an app around that — catalogue, orders, payments, delivery and loyalty. The shop floor, working on a phone.</p>
+          <ul class="eco-chips"><li>Commerce</li><li>Mobile app</li><li>Payments</li><li>Fulfilment</li></ul>
+        </li>
+
+        <li class="eco-step" style="--c:#3FA0FF">
+          <div class="eco-top">
+            <span class="eco-ico"><svg aria-hidden="true"><use href="#i-chart"></use></svg></span>
+            <span class="eco-n">STEP 04</span>
+          </div>
+          <h4>Then the numbers</h4>
+          <p>Analytics that answer the questions an owner actually asks: what sold, which channel earned it, where people drop off — and AI on top suggesting the next move.</p>
+          <ul class="eco-chips"><li>Dashboards</li><li>Attribution</li><li>Retention</li><li>AI insights</li></ul>
+        </li>
+      </ol>
+
+      <p class="eco-cap"><b>Every step is optional, and every step compounds.</b> Most businesses start at 01 and add the rest as they grow — same team, same stack, nothing to rebuild when they do.</p>
     </div>
   </section>
 
