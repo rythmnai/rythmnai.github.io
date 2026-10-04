@@ -30,7 +30,7 @@ export const site = {
   social: {
     facebook: "https://www.facebook.com/rythmnai",
     instagram: "https://www.instagram.com/rythmnai",
-    linkedin: "", // add the company page URL once it exists — icon appears automatically
+    linkedin: "https://www.linkedin.com/company/rythmnai/",
   },
 
   // Optional form backend (Formspree, Web3Forms, Basin…). Empty = the form opens the visitor's email app.
@@ -52,7 +52,38 @@ export const testimonials = [];
 // TODO(owner): client case studies, published with the client's permission. Rendered on /work/.
 // { client: 'Company', industry: 'Retail', title: 'Headline result', services: ['ecommerce-development'],
 //   challenge: '…', solution: '…', results: ['…', '…'], stack: ['Next.js', '…'] }
-export const caseStudies = [];
+export const caseStudies = [
+  {
+    client: 'Thaper Dental Clinic',
+    industry: 'Healthcare · Jaipur · since 1958',
+    url: 'https://thaperdental.com',
+    title: 'A four-branch dental clinic, rebuilt for speed, search and WhatsApp bookings.',
+    services: ['website-development', 'web-application-development'],
+    challenge: 'A trusted Jaipur practice with four branches was represented online by a slow static site: one generic page per treatment, no per-branch presence for Google, and enquiries that could go missing between a form and a phone call.',
+    solution: 'A Next.js rebuild with every treatment, branch and the dental-tourism page generated from one catalogue, Dentist and FAQ structured data for each branch, an open-source Payload CMS for the blog, and a contact flow that saves every lead before handing the patient to WhatsApp with their details pre-filled.',
+    results: [
+      'Lighthouse 100 on desktop and 95 on mobile, enforced in CI on every change',
+      'Nine treatment pages, a dental-tourism page and four branch pages, each with its own schema',
+      'No lost enquiries: every lead is stored first, then routed to reception on WhatsApp',
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Payload CMS', 'PostgreSQL', 'Cloudflare R2'],
+  },
+  {
+    client: 'Nutrition Simplified',
+    industry: 'Health & wellness · Dietitian practice',
+    url: 'https://divyanutritionsimplified.com',
+    title: 'A nutrition practice with its own branded app — meal plans, blood reports and bookings in one place.',
+    services: ['saas-development', 'mobile-app-development', 'web-application-development'],
+    challenge: 'An independent dietitian was paying for a per-seat wellness platform that carried someone else’s brand, while client notes, blood reports and meal plans still lived across WhatsApp chats and spreadsheets.',
+    solution: 'A multi-coach platform the practice owns: a coach dashboard for clients, recipes, meal and workout plans; a branded, installable client app in the practice’s own name and colours; blood-report tracking with optional AI extraction; and a public site with 14 programmes and online booking.',
+    results: [
+      'Branded client app on the web, iOS and Android — with full parity between them',
+      'Blood-report values charted over time against reference ranges',
+      'Meal plans that scale calories and macros automatically, built from the practice’s own recipe library',
+    ],
+    stack: ['Next.js', 'React Native', 'PostgreSQL', 'Drizzle', 'Razorpay', 'OpenAI'],
+  },
+];
 
 // Engagement models for /pricing/. Set `from` (e.g. '₹1.5 lakh') to publish a starting price.
 export const engagements = [

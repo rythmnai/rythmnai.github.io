@@ -21,6 +21,7 @@ const read = f => readFileSync(join(ROOT, f), 'utf8');
 for (const s of services) for (const r of s.related) if (!serviceBySlug[r]) throw new Error(`${s.slug}: unknown related service "${r}"`);
 for (const s of services) if (s.post && !postBySlug[s.post]) throw new Error(`${s.slug}: unknown post "${s.post}"`);
 for (const p of posts) for (const r of p.services) if (!serviceBySlug[r]) throw new Error(`${p.slug}: unknown service "${r}"`);
+for (const c of caseStudies) for (const r of c.services || []) if (!serviceBySlug[r]) throw new Error(`case study ${c.client}: unknown service "${r}"`);
 for (const t of testimonials) if (t.service && !serviceBySlug[t.service]) throw new Error(`testimonial: unknown service "${t.service}"`);
 
 // ------------------------------------------------------------------ home-page regions
@@ -235,7 +236,7 @@ for (const s of services) {
       <div class="copy">
         <p>That is the whole idea behind Rythmn AI. The corner store, the clinic, the studio, the factory, the scale-up — each one should have a digital home it actually owns, a product that carries its business online, and AI working quietly inside it. Not a rented page on someone else’s platform. Not a template with their logo dropped in.</p>
         <p>So we build the same way for a first-time owner as we do for a funded team: real engineering, real ownership, and a path that keeps going after launch. Most clients start with a website or app, then add marketing, commerce and analytics as they grow — with the same team and the same stack, so nothing has to be rebuilt.</p>
-        <p>We also build and run our own products, starting with <a href="/work/">Marketing OS</a>. Everything we learn shipping client platforms goes into our products, and everything we learn running our products goes back into client work.</p>
+        <p>We also build and run our own products: <a href="/work/#marketing-os">Marketing OS</a>, our AI social media marketing platform, and <a href="/work/#astro">Astro</a>, our Vedic astrology app. Everything we learn shipping client platforms goes into our products, and everything we learn running our products goes back into client work.</p>
       </div>
       <aside class="aside">
         <p class="aside-h">Company facts</p>
@@ -283,7 +284,7 @@ for (const s of services) {
 {
   const path = '/work/';
   const title = 'Our Work — Case Studies & Products | Rythmn AI';
-  const description = 'Case studies and products from Rythmn AI, including Marketing OS — our own live marketing platform — plus the in-house foundations behind every client build.';
+  const description = 'Case studies and products from Rythmn AI, including our own live products — Marketing OS for AI social media marketing and Astro for Vedic astrology — plus the in-house foundations behind every client build.';
   const trail = [HOME, { label: 'Work', href: path }];
   const caseCard = c => `<article class="case">
         <p class="eyebrow">${esc([c.client, c.industry].filter(Boolean).join(' · '))}</p>
@@ -295,6 +296,7 @@ for (const s of services) {
         </div>
         ${c.stack?.length ? `<ul class="tags">${c.stack.map(t => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
         ${c.services?.length ? `<p class="aside-h" style="margin:18px 0 0">Services: ${c.services.map(sl => `<a href="/services/${sl}/">${esc(serviceBySlug[sl].short)}</a>`).join(' · ')}</p>` : ''}
+        ${c.url ? `<p style="margin:18px 0 0"><a class="btn btn-ghost btn-sm" href="${c.url}" target="_blank" rel="noopener">Visit ${esc(c.url.replace(/^https?:\/\//, ''))} ${ARROW}</a></p>` : ''}
       </article>`;
   const body = `
   <section class="phero">
@@ -315,15 +317,33 @@ for (const s of services) {
 
   <section class="sec-tight${caseStudies.length ? ' sec-alt' : ''}" aria-labelledby="prod-h" id="marketing-os">
     <div class="wrap">
-      ${sectionHead('Our products', 'Marketing OS — every channel on one board', 'prod-h')}
+      ${sectionHead('Our products', 'Marketing OS — a week of posts, briefed and scheduled', 'prod-h')}
       ${caseCard({
-        client: 'Marketing OS', industry: 'Live product · Marketing technology',
-        title: 'Planning, content, spend and results for every channel, in one place.',
-        challenge: 'Campaigns live in six different tools and none of them agree. Marketing teams plan in one place, write in another, spend across several ad platforms and report from spreadsheets — so nobody can see what each channel actually contributes.',
-        solution: 'A single board for the whole marketing operation: campaign planning, a side-by-side channel mix, an AI content engine that keeps the brand’s voice, attribution back to revenue, automations that shift spend, and one weekly report the whole team reads the same way.',
-        results: ['Every channel — email, SEO, paid, social, lifecycle, content — side by side', 'Revenue tracked back to the campaign that earned it', 'Budget moved the same day a trend shows up'],
+        client: 'Marketing OS', industry: 'Live product · AI social media marketing',
+        title: 'A week of Facebook and Instagram posts for every brand you run — written, art-directed and scheduled.',
+        challenge: 'Small businesses know they should post every day, but writing captions, making pictures that don’t look alike and remembering to publish eats the week. Agencies running many brands have the same problem, multiplied.',
+        solution: 'Brief it once and the AI drafts a week of posts — captions, hashtags, a call to action, art-directed photographs or designed posters with the brand’s own logo and number set onto them, and a suggested time for each. Every post waits as a draft until someone approves it; then it publishes on the minute.',
+        results: ['Publishes to Facebook Pages and Instagram business accounts today', 'Website visits and calls traced back to the post that sent them', 'Up to fifteen brand profiles in one workspace, with team access per brand'],
+        stack: ['Next.js', 'React', 'FastAPI', 'PostgreSQL', 'Redis', 'Cloudflare R2', 'OpenAI'],
+        services: ['saas-development', 'ai-agent-development', 'api-integration-services'],
       })}
-      <p style="margin-top:20px">${L.emailLink({ cls: 'btn', label: 'Get early access', subject: 'Marketing OS early access' })}</p>
+      <p style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="https://rythmn.in/" target="_blank" rel="noopener">Try Marketing OS free ${ARROW}</a>${L.emailLink({ cls: 'btn btn-ghost', label: 'Ask about Marketing OS', subject: 'Marketing OS' })}</p>
+    </div>
+  </section>
+
+  <section class="sec-tight${caseStudies.length ? '' : ' sec-alt'}" aria-labelledby="astro-h" id="astro">
+    <div class="wrap">
+      ${sectionHead('Our products', 'Astro — your Vedic chart, explained in plain words', 'astro-h')}
+      ${caseCard({
+        client: 'Astro', industry: 'Live product · Vedic astrology & AI',
+        title: 'Kundali, matching, numerology and AI answers grounded in the chart itself.',
+        challenge: 'Most astrology apps either bury people in tables they can’t read or let a chatbot invent answers. Accuracy lives in the calculation; trust lives in being able to see why an answer says what it says.',
+        solution: 'A calculation engine on Swiss Ephemeris with Lahiri ayanamsa computes the full chart, dashas, panchang and numerology. An AI layer then explains it in plain English or Hindi — it is handed only the computed chart facts, and every claim cites the factor it came from.',
+        results: ['Kundali (D1 and D9), Guna Milan matching and a Vimshottari dasha timeline', 'Daily rashifal, Rahu Kaal and choghadiya to plan the day', 'Numerology and Name Lab, in English and हिन्दी — with or without a birth time'],
+        stack: ['Python', 'FastAPI', 'Swiss Ephemeris', 'OpenAI', 'Razorpay', 'Vanilla JS'],
+        services: ['ai-chatbot-development', 'rag-development', 'api-backend-development'],
+      })}
+      <p style="margin-top:20px"><a class="btn" href="https://astro.rythmn.in/" target="_blank" rel="noopener">Open Astro ${ARROW}</a></p>
       <div class="soon" style="margin-top:28px">
         <div class="soon-card">
           <span class="soon-tag">In development</span>
@@ -344,7 +364,7 @@ for (const s of services) {
   ${L.ctaBlock()}`;
   write(path, render({
     path, title, description, active: path, body,
-    graph: [...base(), L.webPageNode({ path, title, description, type: 'CollectionPage' }), L.breadcrumbNode(path, trail), marketingOsNode()],
+    graph: [...base(), L.webPageNode({ path, title, description, type: 'CollectionPage' }), L.breadcrumbNode(path, trail), marketingOsNode(), astroNode()],
   }));
 }
 
@@ -354,12 +374,31 @@ function marketingOsNode() {
     '@id': L.abs('/#marketing-os'),
     name: 'Marketing OS',
     url: L.abs('/work/#marketing-os'),
+    sameAs: 'https://rythmn.in/',
     applicationCategory: 'BusinessApplication',
-    applicationSubCategory: 'Marketing automation',
+    applicationSubCategory: 'Social media marketing',
     operatingSystem: 'Web browser',
     publisher: { '@id': L.abs('/#organization') },
-    description: 'Marketing OS puts planning, content, spend and results for every channel on a single board, so teams can see what each channel contributes and move budget the same day.',
-    featureList: ['Campaign board', 'Channel mix', 'AI content engine', 'Attribution', 'Automations', 'Reporting'],
+    description: 'Marketing OS is an AI marketing operating system for small businesses: brief it once and get a week of Facebook and Instagram posts — captions, art-directed images and a suggested time for each — that publish only after you approve them.',
+    featureList: ['Weekly AI content plans', 'Art-directed images and designed posters', 'Brand logo and contact details on every image', 'Instagram carousels', 'Approval calendar and scheduled publishing', 'Website visit tracking by post'],
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR', description: 'Free to sign up, with starter credits' },
+  };
+}
+
+function astroNode() {
+  return {
+    '@type': 'SoftwareApplication',
+    '@id': L.abs('/#astro'),
+    name: 'Astro',
+    url: L.abs('/work/#astro'),
+    sameAs: 'https://astro.rythmn.in/',
+    applicationCategory: 'LifestyleApplication',
+    applicationSubCategory: 'Vedic astrology',
+    operatingSystem: 'Web browser',
+    inLanguage: ['en', 'hi'],
+    publisher: { '@id': L.abs('/#organization') },
+    description: 'Astro calculates a full Vedic kundali, numerology and name analysis from birth details, then answers questions in plain language with every claim linked to the chart factor behind it.',
+    featureList: ['Kundali (D1 and D9)', 'Ask My Chart AI answers with citations', 'Guna Milan matching', 'Vimshottari dasha timeline', 'Daily rashifal and day planning', 'Numerology and Name Lab'],
   };
 }
 
@@ -646,10 +685,32 @@ home = inject(home, 'jsonld', L.jsonld([
   L.orgNode(),
   L.businessNode(),
   marketingOsNode(),
+  astroNode(),
   L.websiteNode(),
   L.webPageNode({ path: '/', title: 'Software, AI & Cloud Engineering Company in Jaipur — Rythmn AI', description: 'Rythmn AI Digital Private Limited designs, builds and runs software: websites, web apps, SaaS, e-commerce, mobile, AI agents, cloud and DevOps.' }),
 ]));
 home = inject(home, 'proof', `  ${quotesSection(testimonials)}
+  ${caseStudies.length ? `<section class="sec" id="work" aria-labelledby="work-h" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Client work</p>
+        <h2 class="h2" id="work-h">Built for real businesses, <span class="accent">running in production</span></h2>
+        <p class="lede">A few of the teams we design, build and run software for.</p>
+      </div>
+      <div class="work-grid">${caseStudies.slice(0, 2).map((c, i) => `
+        <article class="work-card rv" style="--c:${['#0B6FE8', '#12B76A', '#F58B00'][i % 3]};--d:${i * 0.12}s">
+          <p class="work-ind">${esc(c.industry)}</p>
+          <h3>${esc(c.client)}</h3>
+          <p>${esc(c.title)}</p>
+          <ul class="work-res">${c.results.slice(0, 2).map(r => `<li>${icon('i-check')}<span>${esc(r)}</span></li>`).join('')}</ul>
+          <div class="work-foot">
+            <a class="btn btn-ghost btn-sm" href="/work/">Read the case study</a>
+            ${c.url ? `<a class="work-url" href="${c.url}" target="_blank" rel="noopener">${esc(c.url.replace(/^https?:\/\//, ''))} ↗</a>` : ''}
+          </div>
+        </article>`).join('')}
+      </div>
+    </div>
+  </section>` : ''}
   <section class="sec" aria-labelledby="blog-h" style="padding-top:0">
     <div class="wrap">
       <div class="sec-head">

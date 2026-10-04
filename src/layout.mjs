@@ -284,6 +284,37 @@ const MENU_JS = `<script>
     b.setAttribute('aria-expanded', open ? 'true' : 'false');
     b.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   });
+
+  /* header shrink + scroll progress */
+  var h = document.querySelector('.hdr'), busy = false;
+  function onScroll(){
+    var y = window.scrollY, max = document.documentElement.scrollHeight - innerHeight;
+    h.classList.toggle('scrolled', y > 8);
+    h.style.setProperty('--prog', max > 0 ? (y / max).toFixed(4) : 0);
+    busy = false;
+  }
+  addEventListener('scroll', function(){ if (!busy) { busy = true; requestAnimationFrame(onScroll); } }, {passive:true});
+  onScroll();
+
+  /* reveal cards as they scroll in; anything already on screen is left alone */
+  if (!document.documentElement.classList.contains('rv-on') || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold: .12, rootMargin: '0px 0px -6% 0px'});
+  document.querySelectorAll('main .sec-head, .svc, .post-card, .dlv li, .bar, .eng-card, .values li, .case, .quote, .stack-col, .faq details, .aside, .soon-card, .grp-head, .cta').forEach(function(el){
+    if (el.getBoundingClientRect().top < innerHeight) return;
+    var k = Array.prototype.indexOf.call(el.parentNode.children, el) % 3;
+    el.style.setProperty('--d', (k * 0.08) + 's');
+    el.classList.add('rv');
+    io.observe(el);
+  });
+  document.querySelectorAll('.svc').forEach(function(c){
+    c.addEventListener('mousemove', function(e){
+      var r = c.getBoundingClientRect();
+      c.style.setProperty('--x', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--y', (e.clientY - r.top) + 'px');
+    });
+  });
 })();
 </script>`;
 
@@ -304,6 +335,7 @@ ${site.analytics}
 <meta name="author" content="${esc(site.legalName)}">
 <meta name="theme-color" content="#F4F7FE">
 <meta name="color-scheme" content="light">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('rv-on')</script>
 <meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="${esc(site.name)}">
 <meta property="og:locale" content="en_IN">
