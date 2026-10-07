@@ -215,7 +215,7 @@ export function footer() {
       </div>
     </div>
     <div class="ftr-bot">
-      <p class="ftr-meta">${legal}</p>
+      <p class="ftr-meta">${legal} · <a href="/privacy/">Privacy policy</a></p>
       <span class="ftr-tag">Build <b>·</b> Innovate <b>·</b> Grow</span>
     </div>
   </div>
@@ -318,6 +318,11 @@ const MENU_JS = `<script>
 })();
 </script>`;
 
+// AdSense loader; index.html carries the same tag by hand, next to the analytics script.
+export const adsense = () => site.adsenseClient
+  ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsenseClient}" crossorigin="anonymous"></script>`
+  : '';
+
 // Full document for every generated page. `css` and `sprite` are lifted from index.html by build.mjs,
 // so the home page stays the single source of truth for base styles and icons.
 export function page({ path, title, description, active = '', body, graph = [], ogType = 'website', css, sprite, scripts = '', robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' }) {
@@ -331,6 +336,7 @@ export function page({ path, title, description, active = '', body, graph = [], 
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${url}">
 ${site.analytics}
+${adsense()}
 <meta name="robots" content="${robots}">
 <meta name="author" content="${esc(site.legalName)}">
 <meta name="theme-color" content="#F4F7FE">

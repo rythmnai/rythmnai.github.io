@@ -664,6 +664,78 @@ for (const p of posts) {
   }));
 }
 
+// ------------------------------------------------------------------ privacy policy
+{
+  const path = '/privacy/';
+  const title = 'Privacy Policy — Rythmn AI';
+  const description = `How ${site.legalName} collects, uses and protects information on ${site.url.replace('https://', '')}, including cookies and Google AdSense advertising.`;
+  const updated = '2026-10-07';
+  const trail = [HOME, { label: 'Privacy policy', href: path }];
+  const ads = site.adsenseClient ? `
+        <h2 id="advertising">Advertising and Google AdSense</h2>
+        <p>We use Google AdSense to show ads on this site. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this website or other websites.</p>
+        <p>Google’s use of advertising cookies enables it and its partners to serve ads to you based on your visits to this site and/or other sites on the internet. Google may also use device identifiers and similar technologies for frequency capping, aggregated ad reporting and to combat fraud and abuse.</p>
+        <p>You can opt out of personalised advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>, and you can opt out of some third-party vendors’ use of cookies for personalised advertising at <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">aboutads.info</a>. To learn how Google uses information from sites that use its services, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">How Google uses information from sites or apps that use our services</a>.</p>
+        <p>Where the law requires it (for example for visitors in the European Economic Area, the UK and Switzerland), we ask for your consent before personalised ads are shown, and you can change your choice at any time.</p>` : '';
+  const body = `
+  <section class="phero">
+    <div class="wrap phero-in">
+      ${L.crumbs(trail)}
+      <p class="art-meta">Last updated <time datetime="${updated}">${fmtDate(updated)}</time></p>
+      <h1 class="h1" style="margin-top:14px">Privacy policy</h1>
+    </div>
+  </section>
+  <section class="sec-tight">
+    <div class="wrap">
+      <article class="prose">
+        <p>This policy explains what information ${esc(site.legalName)} (“Rythmn AI”, “we”, “us”) collects when you visit <a href="/">${site.url.replace('https://', '')}</a>, how we use it, and the choices you have. It applies to this website only; client projects are covered by the agreements we sign with each client.</p>
+
+        <h2 id="what-we-collect">Information we collect</h2>
+        <ul>
+          <li><strong>Information you give us.</strong> When you email us or use the contact form, we receive what you send: typically your name, email address, phone number, company and details of your project.</li>
+          <li><strong>Usage data.</strong> Like most websites, our hosting and analytics record technical information such as pages visited, referring page, approximate location derived from IP address, browser and device type, and the date and time of the visit.</li>
+          <li><strong>Cookies and similar technologies.</strong> Small files stored by your browser, used for analytics and, where shown, advertising. See the sections below.</li>
+        </ul>
+        <p>We do not knowingly collect sensitive personal data, and this site is not directed at children under 18.</p>
+
+        <h2 id="how-we-use">How we use information</h2>
+        <ul>
+          <li>To reply to your enquiry, prepare proposals and provide the services you ask for.</li>
+          <li>To understand how the site is used and improve its content and performance.</li>
+          <li>To show advertising that helps fund the free content on this site.</li>
+          <li>To keep the site secure and comply with our legal obligations.</li>
+        </ul>
+        <p>We do not sell your personal information.</p>
+
+        <h2 id="analytics">Analytics</h2>
+        <p>We use a privacy-focused analytics service to count visits and see which pages are useful. It reports aggregated statistics and is not used to identify individual visitors.</p>
+${ads}
+        <h2 id="cookies">Managing cookies</h2>
+        <p>You can block or delete cookies in your browser settings. If you block cookies the site will still work, though ads you see may be less relevant.</p>
+
+        <h2 id="sharing">Sharing</h2>
+        <p>We share information only with service providers that help us run this site and our business (such as hosting, email, analytics and advertising providers), when required by law, or to protect our rights. These providers process data under their own privacy policies and the terms we have with them.</p>
+
+        <h2 id="retention">Retention and security</h2>
+        <p>We keep enquiry emails and project correspondence for as long as needed to respond and to maintain business records, and delete them when they are no longer required. We use reasonable technical and organisational measures to protect information, but no method of transmission over the internet is completely secure.</p>
+
+        <h2 id="your-rights">Your rights</h2>
+        <p>Under India’s Digital Personal Data Protection Act, 2023 and other laws that may apply to you, you can ask to access, correct or erase the personal data we hold about you, withdraw consent you have given, and raise a grievance. Email us at ${L.emailLink({ subject: 'Privacy request' })} and we will respond within a reasonable time.</p>
+
+        <h2 id="changes">Changes to this policy</h2>
+        <p>We may update this policy from time to time. The “last updated” date above shows when it last changed.</p>
+
+        <h2 id="contact">Contact</h2>
+        <p>${esc(site.legalName)}, ${esc(site.address.locality)}, ${esc(site.address.region)}, ${esc(site.address.countryName)}. Email: ${L.emailLink({ subject: 'Privacy question' })}.</p>
+      </article>
+    </div>
+  </section>`;
+  write(path, render({
+    path, title, description, body,
+    graph: [...base(), L.webPageNode({ path, title, description }), L.breadcrumbNode(path, trail)],
+  }));
+}
+
 // ------------------------------------------------------------------ 404
 write('/404.html', render({
   path: '/404.html', title: 'Page not found — Rythmn AI', description: 'This page doesn’t exist.', robots: 'noindex, follow',
@@ -723,6 +795,9 @@ home = inject(home, 'proof', `  ${quotesSection(testimonials)}
     </div>
   </section>`);
 writeFileSync(join(ROOT, 'index.html'), home);
+
+// ------------------------------------------------------------------ ads.txt
+if (site.adsenseClient) writeFileSync(join(ROOT, 'ads.txt'), `google.com, ${site.adsenseClient.replace(/^ca-/, '')}, DIRECT, f08c47fec0942fa0\n`);
 
 // ------------------------------------------------------------------ sitemap
 writeFileSync(join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>

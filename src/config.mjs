@@ -38,6 +38,10 @@ export const site = {
 
   analytics:
     '<script defer data-cfasync="false" src="https://ai.rythmn.in/t/s.js" data-site="8RKoziArvn2F"></script>',
+
+  // Google AdSense publisher ID. Drives the AdSense <head> script on every page and /ads.txt.
+  // Empty = no ads code and no ads.txt.
+  adsenseClient: "ca-pub-8431686268884658",
 };
 
 // TODO(owner): real people build trust. Rendered on /about/ when non-empty.
