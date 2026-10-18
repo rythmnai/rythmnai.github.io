@@ -357,17 +357,17 @@ export const services = [
     group: "build",
     name: "Website Development",
     short: "Website development",
-    title: "Website Development Company in Jaipur, India — Rythmn AI",
-    h1: "Website development company in Jaipur, building for businesses across India",
+    title: "Website Development Company in Alwar, India — Rythmn AI",
+    h1: "Website development company in Alwar, building for businesses across India",
     description:
-      "Fast, SEO-ready business websites and landing pages from a Jaipur-based team — custom design, easy-to-edit CMS, Core Web Vitals and analytics included. Serving clients across India and worldwide.",
+      "Fast, SEO-ready business websites and landing pages from a Alwar-based team — custom design, easy-to-edit CMS, Core Web Vitals and analytics included. Serving clients across India and worldwide.",
     kicker: "Build · Websites & landing pages",
     icon: "i-web",
     color: "#0B6FE8",
     local: true,
     intro: [
       "Your website is the one piece of the internet your business fully owns. We design and build sites that load fast on a mid-range phone, read clearly, rank for what your customers actually search, and turn visits into enquiries — then hand you a CMS your team can run without calling a developer for every change.",
-      "We’re based in Jaipur and work with businesses across Rajasthan, the rest of India and abroad — from a first website for a clinic, showroom or studio to a multi-language marketing site for a growing SaaS company. The engineering standard is the same either way.",
+      "We’re based in Alwar and work with businesses across Rajasthan, the rest of India and abroad — from a first website for a clinic, showroom or studio to a multi-language marketing site for a growing SaaS company. The engineering standard is the same either way.",
     ],
     deliverables: [
       {
@@ -431,7 +431,7 @@ export const services = [
     ],
     faqs: [
       {
-        q: "How much does website development cost in Jaipur?",
+        q: "How much does website development cost in Alwar?",
         a: "It depends on the number of pages, how custom the design is, the CMS and any integrations. A focused business website or landing page is a small fixed-price project; a large multi-language site with custom features costs more. We give a fixed written quote after a free 30-minute call.",
       },
       {
@@ -443,8 +443,8 @@ export const services = [
         a: "Yes. Every site ships with a clean structure, schema markup, a sitemap, fast load times and Google Search Console set up. Ongoing content and SEO work can be added after launch.",
       },
       {
-        q: "Do you only work with businesses in Jaipur?",
-        a: "No. We are based in Jaipur and work with clients across India and worldwide, remotely or in person where it helps.",
+        q: "Do you only work with businesses in Alwar?",
+        a: "No. We are based in Alwar and work with clients across India and worldwide, remotely or in person where it helps.",
       },
       {
         q: "Can I update the website myself?",

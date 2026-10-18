@@ -157,7 +157,7 @@ for (const s of services) {
         url: L.abs(path),
         provider: { '@id': L.abs('/#organization') },
         areaServed: s.local
-          ? [{ '@type': 'City', name: 'Jaipur' }, { '@type': 'State', name: 'Rajasthan' }, { '@type': 'Country', name: 'India' }]
+          ? [{ '@type': 'City', name: site.address.locality }, { '@type': 'State', name: 'Rajasthan' }, { '@type': 'Country', name: 'India' }]
           : [{ '@type': 'Country', name: 'India' }, { '@type': 'Place', name: 'Worldwide' }],
       },
       L.breadcrumbNode(path, trail),
@@ -203,8 +203,8 @@ for (const s of services) {
 // ------------------------------------------------------------------ about
 {
   const path = '/about/';
-  const title = 'About Rythmn AI — Software & AI Engineering Company in Jaipur';
-  const description = 'Rythmn AI Digital Private Limited is a Jaipur-based software, AI and cloud engineering company. Why we exist, how we work, and the team behind it.';
+  const title = `About Rythmn AI — Software & AI Engineering Company in ${site.address.locality}`;
+  const description = `Rythmn AI Digital Private Limited is a ${site.address.locality}-based software, AI and cloud engineering company. Why we exist, how we work, and the team behind it.`;
   const trail = [HOME, { label: 'About', href: path }];
   const facts = [
     ['Company', site.legalName],
@@ -759,7 +759,7 @@ home = inject(home, 'jsonld', L.jsonld([
   marketingOsNode(),
   astroNode(),
   L.websiteNode(),
-  L.webPageNode({ path: '/', title: 'Software, AI & Cloud Engineering Company in Jaipur — Rythmn AI', description: 'Rythmn AI Digital Private Limited designs, builds and runs software: websites, web apps, SaaS, e-commerce, mobile, AI agents, cloud and DevOps.' }),
+  L.webPageNode({ path: '/', title: `Software, AI & Cloud Engineering Company in ${site.address.locality} — Rythmn AI`, description: 'Rythmn AI Digital Private Limited designs, builds and runs software: websites, web apps, SaaS, e-commerce, mobile, AI agents, cloud and DevOps.' }),
 ]));
 home = inject(home, 'proof', `  ${quotesSection(testimonials)}
   ${caseStudies.length ? `<section class="sec" id="work" aria-labelledby="work-h" style="padding-top:0">

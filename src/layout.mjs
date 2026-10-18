@@ -71,7 +71,7 @@ function postalAddress() {
   }).filter(([, v]) => v));
 }
 
-// Local-business node: this is what ties the site to Jaipur for local search.
+// Local-business node: this is what ties the site to Alwar for local search.
 export function businessNode() {
   const node = {
     '@type': 'ProfessionalService',

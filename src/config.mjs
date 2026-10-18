@@ -12,10 +12,10 @@ export const site = {
   phone: "", // display format, e.g. '+91 98765 43210'
   whatsapp: "", // digits only with country code, e.g. '919876543210'
   address: {
-    street: "", // e.g. 'Office 4B, XYZ Tower, Malviya Nagar'
-    locality: "Jaipur",
+    street: "Flat No. 163, First Floor, Block-A, AGS Extension, Apna Ghar Shalimar",
+    locality: "Alwar",
     region: "Rajasthan",
-    postalCode: "", // e.g. '302017'
+    postalCode: "301001",
     country: "IN",
     countryName: "India",
   },
